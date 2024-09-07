@@ -1,10 +1,9 @@
 
-import javax.swing.JOptionPane;
-
-
 public class cadastroVIEW extends javax.swing.JFrame {
 
-   
+    /**
+     * Creates new form cadastroVIEW
+     */
     public cadastroVIEW() {
         initComponents();
     }
@@ -129,33 +128,19 @@ public class cadastroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastroNomeActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-      // Criação do objeto ProdutosDTO
-    ProdutosDTO produto = new ProdutosDTO();
-    
-    // Obtenção dos valores dos campos de texto
-    String nome = cadastroNome.getText();
-    String valor = cadastroValor.getText();
-    
-    // Verificação se o valor é numérico
-    try {
-        int valorNumerico = Integer.parseInt(valor);
-        
-        // Se a conversão for bem-sucedida, definimos os valores no objeto produto
+     
+        ProdutosDTO produto = new ProdutosDTO();
+        String nome = cadastroNome.getText();
+        String valor = cadastroValor.getText();
+       
         String status = "A Venda";
-        
+       
         produto.setNome(nome);
-        produto.setValor(valorNumerico);
+        produto.setValor(Integer.parseInt(valor));
         produto.setStatus(status);
         
-        // Criação do objeto ProdutosDAO e chamada do método cadastrarProduto
         ProdutosDAO produtodao = new ProdutosDAO();
         produtodao.cadastrarProduto(produto);
-        
-        
-    } catch (NumberFormatException e) {
-        // Se a conversão falhar, exibimos uma mensagem de erro
-        JOptionPane.showMessageDialog(this, "Por favor, insira um valor numérico válido.", "Erro de Validação", JOptionPane.ERROR_MESSAGE);
-    }
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
